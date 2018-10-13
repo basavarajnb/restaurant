@@ -1,6 +1,13 @@
-# XLabs
+# Restaurant
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+Application features:
+1. Responsive
+2. Sort feature
+3. Filter features
+4. Oder summary
+5. Used mackable APIs
+6. Order confirmation
+7. Notifying user with messages.
 
 ## Development server
 
