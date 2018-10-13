@@ -1,0 +1,52 @@
+.order-summary {
+
+  .order-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__submit {
+    width: 100%;
+    padding: .5rem 0;
+    margin-top: 1rem;
+  }
+}
+
+.view-order-details {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  width: 100%;
+
+  &__button {
+    width: 100%;
+    padding: .5rem 0;
+  }
+}
+
+.overlay-popup {
+  .order-summary__header {
+    display: flex;
+    justify-content: space-between;
+
+    >button {
+      display: block;
+    }
+  }
+}
+
+
+.d-none {
+  .order-summary__header {
+    >button {
+      display: none;
+    }
+  }
+}

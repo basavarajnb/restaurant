@@ -1,0 +1,24 @@
+<article class="food-item-card">
+  <mat-card>
+    <img mat-card-image [src]="foodItem?.imageUrl" [alt]="foodItem?.name">
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-title>{{foodItem?.name}}</mat-card-title>
+      </mat-card-header>
+      <p class="food-item-card__description">
+        {{foodItem?.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <label>₹ {{foodItem?.price}} <i *ngIf="foodItem?.isVeg" class="fas fa-leaf color-green"></i></label>
+      <button mat-button class="primary-button" *ngIf="showAdd; else buttonGroup" (click)="addClicked()">ADD</button>
+      <ng-template #buttonGroup>
+        <div class="mat-card-action-buttons">
+          <button mat-icon-button (click)="decreaseCount()"><i class="fas fa-minus"></i></button>
+          <label>{{orderItemDetail?.orderCount}}</label>
+          <button mat-icon-button (click)="increaseCount()"><i class="fas fa-plus"></i></button>
+        </div>
+      </ng-template>
+    </mat-card-actions>
+  </mat-card>
+</article>

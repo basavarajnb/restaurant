@@ -1,0 +1,20 @@
+.app-main {
+  &__header {
+    align-items: center;
+    margin-bottom: .5rem;
+
+    &--sort {}
+
+    button {
+      height: 50px;
+      padding: .5rem 0;
+    }
+  }
+}
+
+.filter-dialog {
+  &__action {
+    display: flex;
+    justify-content: space-around
+  }
+}

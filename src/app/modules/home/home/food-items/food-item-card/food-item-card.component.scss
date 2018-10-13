@@ -1,0 +1,11 @@
+.food-item-card {
+  padding-bottom: 1rem;
+
+  .mat-card-header-text {
+    margin: 0;
+  }
+
+  &__description {
+    height: 60px;
+  }
+}

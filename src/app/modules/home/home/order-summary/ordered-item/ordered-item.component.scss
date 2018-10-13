@@ -1,0 +1,17 @@
+.ordered-item {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    flex: 3 0 0;
+  }
+
+  &__count {
+    flex: 1 0 0;
+  }
+
+  &__amount {
+    flex: 1 0 0;
+  }
+
+}

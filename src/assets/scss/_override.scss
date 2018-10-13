@@ -1,0 +1,77 @@
+* {
+
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+label {
+  margin-bottom: 0;
+}
+
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/*  apply a natural box layout model to all elements  */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+
+.w-100 {
+  width: 100%;
+}
+
+mat-card {
+  mat-card-header {
+    .mat-card-header-text {
+      margin: 0;
+    }
+  }
+
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.mat-raised-button[disabled][disabled] {
+  color: rgba(0, 0, 0, .46);
+}
+
+.mat-menu-panel {
+  .mat-menu-content {
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .5rem;
+    }
+  }
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.button-width-normal {
+  width: 100px;
+}

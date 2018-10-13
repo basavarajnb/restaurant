@@ -1,0 +1,25 @@
+<section id="order-summary" class="order-summary d-none d-lg-block" #orderSummary>
+  <div class="order-summary__header">
+    <h1>Cart</h1>
+    <button mat-mini-fab color="none" (click)="overlayCloseClicked()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="ordered-items">
+    <app-ordered-item *ngFor="let orderedItem of orderDetails; trackBy: trackByFn " [orderedItem]="orderedItem"></app-ordered-item>
+  </div>
+  <div *ngIf="!orderDetails || orderDetails?.length === 0">
+    No items in the cart!
+  </div>
+  <hr>
+  <div class="order-total">
+    <label for="">Total Amount: </label>
+    <label for="">₹ {{totalValue}}</label>
+  </div>
+  <button mat-raised-button class="order-summary__submit" (click)="confirmOrderClicked()" [class.primary-button]="totalValue" [disabled]="!totalValue">Confirm
+    The Order</button>
+</section>
+
+<section class="d-block d-lg-none view-order-details">
+  <button class="view-order-details__button primary-button" (click)="viewOrderDetailClicked()" mat-raised-button
+    [hidden]="!totalValue">view
+    Order Details</button>
+</section>

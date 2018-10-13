@@ -1,0 +1,16 @@
+$grid-breakpoints: (xs: 0,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px);
+
+$primary-color: #302b27;
+$secondary-color:#baa256;
+$font-color: #dce2eb;
+
+$default-font: 'Roboto', sans-serif;
+$normal-weight: 300;
+$bold-weight: 700;
+
+$gutter: 2%;
+$gutter-double: (2 * $gutter);

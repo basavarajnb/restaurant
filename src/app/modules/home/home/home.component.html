@@ -1,0 +1,51 @@
+<main class="app-main container">
+  <div class="app-main__header row">
+    <app-search-box class="clearfix col-12 col-md-12 col-lg-6" [options]="tags" [placeholder]="'Search for cuisine'"
+      (searchTextChanged)="searchTextChanged($event)"></app-search-box>
+
+    <button mat-raised-button class="app-main__header--sort col-6 col-md-6 col-lg-3" [matMenuTriggerFor]="menu">
+      Sort <i class="fas fa-sort"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="sort('price')" class="w-100">Price</button>
+      <button mat-menu-item (click)="sort('rating')" class="w-100">Rating</button>
+    </mat-menu>
+    <button mat-raised-button class="app-main__header--filter col-6 col-md-6 col-lg-3" (click)="filterClicked()">
+      Filter <i class="fas fa-filter"></i>
+    </button>
+
+    <div #filterDialog class="d-none filter-dialog">
+      <div *ngIf="showFilterDialog" class="filter-dialog-container">
+        <div class="row filter-dialog__header">
+          <h1>Filter</h1>
+        </div>
+        <hr>
+        <div class="filter-dialog__content">
+          <div class="filter-item row" *ngFor="let filterConfig of filterConfigs">
+            <h2 class="filter-item__title col-12">{{filterConfig.name}}</h2>
+            <label class="col-3" *ngFor="let configItem of filterConfig.filters; let i = index">
+              <input [(ngModel)]="configItem.value" type="checkbox" [name]="filterConfig.key + i" class="mr-10">
+              {{configItem?.name}}
+            </label>
+          </div>
+        </div>
+        <hr>
+        <div class="row filter-dialog__action">
+          <button mat-raised-button (click)="filterCancelClick()" class="col-6 col-md-3 mb-10 button-width-normal">Cancel</button>
+          <button mat-raised-button (click)="filterSubmitClick()" class="col-12 col-md-3 primary-button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <section class="col-12 col-md-12 col-lg-8">
+      <app-food-items class="clearfix" [foodItems]="filterredFoodItems"></app-food-items>
+    </section>
+    <section class="col-12 col-lg-4">
+      <app-order-summary></app-order-summary>
+    </section>
+  </div>
+</main>

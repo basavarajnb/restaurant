@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/reset";
+@import "assets/scss/variables";
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "assets/scss/override";
+
+
+@import "assets/scss/small-default";
+
+//35em is also 560px (if basefont is 16px)
+@media only screen and (min-width: 35em) {
+	@import "assets/scss/medium";
+}
+
+//64em is also 1028px (if basefont is 16px)
+@media only screen and (min-width: 64em) {
+	@import "assets/scss/large";
+} 
+
+
