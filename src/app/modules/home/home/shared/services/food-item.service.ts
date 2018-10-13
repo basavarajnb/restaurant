@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FoodItem } from '../model/food-item.model';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+import { FoodItem } from '../model/food-item.model';
+import { UrlConstants } from 'src/app/shared/constants/url.constants';
+import { ApiResponse } from '../model/api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +15,20 @@ export class FoodItemService {
   constructor(private httpClient: HttpClient) { }
 
   getAllFoodItems() {
-    return this.httpClient.get('assets/jsons/food-item-list.json');
+    return this.httpClient.get(UrlConstants.getAllFoodItems).pipe(map((response: ApiResponse) => {
+      if (response && response.data) {
+        return response.data;
+      }
+      return [];
+    }));
   }
 
   getAllTags() {
-    return this.httpClient.get('assets/jsons/tags.json');
+    return this.httpClient.get(UrlConstants.getAllTags).pipe(map((response: ApiResponse) => {
+      if (response && response.data) {
+        return response.data;
+      }
+      return [];
+    }));
   }
 }

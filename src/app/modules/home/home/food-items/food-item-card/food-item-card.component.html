@@ -6,11 +6,13 @@
         <mat-card-title>{{foodItem?.name}}</mat-card-title>
       </mat-card-header>
       <p class="food-item-card__description">
-        {{foodItem?.description}}
+        Ingredients : {{foodItem?.ingredientsText}}
       </p>
     </mat-card-content>
     <mat-card-actions>
+
       <label>₹ {{foodItem?.price}} <i *ngIf="foodItem?.isVeg" class="fas fa-leaf color-green"></i></label>
+      <label><i class="fas fa-star"></i> {{foodItem?.rating}}</label>
       <button mat-button class="primary-button" *ngIf="showAdd; else buttonGroup" (click)="addClicked()">ADD</button>
       <ng-template #buttonGroup>
         <div class="mat-card-action-buttons">

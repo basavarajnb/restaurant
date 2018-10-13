@@ -16,6 +16,7 @@ export class SearchBoxComponent implements OnInit {
   @Output() searchTextChanged = new EventEmitter<string>();
 
   subscription;
+  searchText = '';
   searchTextChanged$ = new Subject<any>();
 
   searchControl = new FormControl();
@@ -65,6 +66,10 @@ export class SearchBoxComponent implements OnInit {
   emitSearchText(search) {
     this.searchTextChanged.emit(search);
     return of(search);
+  }
+
+  clearText() {
+    this.searchText = '';
   }
 
   private filter(name: string): any[] {

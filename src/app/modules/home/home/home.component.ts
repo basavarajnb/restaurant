@@ -34,27 +34,25 @@ export class HomeComponent implements OnInit {
     public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    // Load all tags, food items and filter config
     this.getAllTags();
     this.getAllFoodItems();
     this.getFilterConfig();
 
+    // When the user adds the food item to cart.
+    // When the user increases or decreases the order count of an item
     this.orderDetailService.orderDetailsChanged().subscribe((orderDetails) => {
       if (orderDetails && orderDetails.length === 0) {
         const foodItemList = [];
         this.originalFoodItems.forEach((foodItem) => {
           foodItemList.push({ ...foodItem });
-
         });
         this.foodItems = foodItemList;
         this.filterredFoodItems = foodItemList;
       }
     });
   }
-  getFilterConfig() {
-    this.filterService.getFilterConfig().subscribe((filterConfigs: FilterConfig[]) => {
-      this.filterConfigs = filterConfigs;
-    });
-  }
+
   getAllTags() {
     this.foodItemService.getAllTags().subscribe(
       (tags: Array<string>) => {
@@ -66,33 +64,42 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  filterCancelClick() {
-    this.showFilterDialog = false;
-    this.filterDialog.nativeElement.classList.add('d-none');
-    this.filterDialog.nativeElement.classList.remove('overlay-popup');
-  }
-
-  filterSubmitClick() {
-    this.openSnackBar('Filtering');
-    this.filterredFoodItems = this.filterService.filter(this.foodItems, this.filterConfigs);
-    this.filterDialog.nativeElement.classList.add('d-none');
-    this.filterDialog.nativeElement.classList.remove('overlay-popup');
-  }
-
   getAllFoodItems() {
     this.foodItemService.getAllFoodItems().subscribe(
       (foodItems: Array<FoodItem>) => {
         this.foodItems = foodItems;
         this.filterredFoodItems = foodItems;
         this.foodItems.forEach((foodItem) => {
+          foodItem['ingredientsText'] = foodItem.ingredients ? foodItem.ingredients.join(', ') : '';
           this.originalFoodItems.push({ ...foodItem });
-
         });
       },
       (error) => {
         console.error('Error while fetching the food items.');
       }
     );
+  }
+
+  getFilterConfig() {
+    this.filterService.getFilterConfig().subscribe((filterConfigs: FilterConfig[]) => {
+      this.filterConfigs = filterConfigs;
+    });
+  }
+
+  // Cancel click on filter window
+  filterCancelClick() {
+    this.showFilterDialog = false;
+    this.filterDialog.nativeElement.classList.add('d-none');
+    this.filterDialog.nativeElement.classList.remove('overlay-popup');
+  }
+
+  // Submit click on filter window
+  filterSubmitClick() {
+    this.openSnackBar('Filtering');
+    this.filterredFoodItems = this.filterService.filter(this.foodItems, this.filterConfigs);
+    this.openSnackBar(this.filterredFoodItems.length + ' items found.');
+    this.filterDialog.nativeElement.classList.add('d-none');
+    this.filterDialog.nativeElement.classList.remove('overlay-popup');
   }
   searchTextChanged(value: string) {
     this.searchText = value;
@@ -108,6 +115,12 @@ export class HomeComponent implements OnInit {
     this.showFilterDialog = true;
     this.filterDialog.nativeElement.classList.remove('d-none');
     this.filterDialog.nativeElement.classList.add('overlay-popup');
+  }
+
+  openSnackBar(message, duration = 5000) {
+    this.snackBar.open(message, '', {
+      duration: duration,
+    });
   }
 
   sort(sortType) {
@@ -138,16 +151,6 @@ export class HomeComponent implements OnInit {
     this.openSnackBar(message);
   }
 
-  openSnackBar(message) {
-    this.snackBar.open(message, '', {
-      duration: 3000,
-    });
-  }
-
-  compare(a, b) {
-
-  }
-
   private filter(value: string): any[] {
     const filterValue = value.toLowerCase();
     return this.foodItems.filter((option) => {
@@ -162,11 +165,5 @@ export class HomeComponent implements OnInit {
       }
       return false;
     });
-  }
-
-  searchNow(event) {
-    if (event && event.target && event.target.value) {
-      this.searchService.searchCousines(event.target.value);
-    }
   }
 }

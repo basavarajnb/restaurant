@@ -5,6 +5,8 @@ export class FoodItem {
     rating: number;
     imageUrl: string;
     description: string;
+    ingredients: string[];
+    ingredientsText: string;
     preparationTime: number;
     categories: Array<string>;
     isVeg: boolean;

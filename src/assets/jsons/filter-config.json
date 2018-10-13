@@ -1,90 +1,96 @@
-[{
-    "key": "dietPreference",
-    "name": "Diet Preference",
-    "filters": [{
-        "key": "Veg",
-        "name": "Veg",
-        "value": false
+{
+  "message": {
+    "code": "success code",
+    "text": "success text"
+  },
+  "data": [{
+      "key": "dietPreference",
+      "name": "Diet Preference",
+      "filters": [{
+          "key": "Veg",
+          "name": "Veg",
+          "value": false
 
-      },
-      {
-        "key": "Non Veg",
-        "name": "Non Veg",
-        "value": false
-      }
-    ]
-  },
-  {
-    "key": "category",
-    "name": "Category",
-    "filters": [{
-        "key": "American",
-        "name": "American",
-        "value": false
-      },
-      {
-        "key": "Italian",
-        "name": "Italian",
-        "value": false
-      },
-      {
-        "key": "North Indian",
-        "name": "North Indian",
-        "value": false
-      },
-      {
-        "key": "South Indian",
-        "name": "South Indian",
-        "value": false
-      }
-    ]
-  },
-  {
-    "key": "price",
-    "name": "Price",
-    "filters": [{
-      "key": "Below 100",
-      "name": "Below 100",
-      "low": 0,
-      "high": 100,
-      "value": false
-    }, {
-      "key": "100 to 200",
-      "name": "100 to 200",
-      "low": 0,
-      "high": 100,
-      "value": false
-    }, {
-      "key": "Above 200",
-      "name": "Above 200",
-      "low": 0,
-      "high": 100,
-      "value": false
-    }]
-  },
-  {
-    "key": "rating",
-    "name": "Rating",
-    "filters": [{
-        "key": "Above 4",
-        "name": "Above 4",
-        "low": 4,
-        "high": 5,
-        "value": false
-      },
-      {
-        "key": "Above 3.5",
-        "name": "Above 3.5",
-        "low": 3.5,
-        "high": 5,
+        },
+        {
+          "key": "Non Veg",
+          "name": "Non Veg",
+          "value": false
+        }
+      ]
+    },
+    {
+      "key": "category",
+      "name": "Category",
+      "filters": [{
+          "key": "American",
+          "name": "American",
+          "value": false
+        },
+        {
+          "key": "Italian",
+          "name": "Italian",
+          "value": false
+        },
+        {
+          "key": "North Indian",
+          "name": "North Indian",
+          "value": false
+        },
+        {
+          "key": "South Indian",
+          "name": "South Indian",
+          "value": false
+        }
+      ]
+    },
+    {
+      "key": "price",
+      "name": "Price",
+      "filters": [{
+        "key": "Below 100",
+        "name": "Below 100",
+        "low": 0,
+        "high": 100,
         "value": false
       }, {
-        "key": "Above 3",
-        "name": "Above 3",
-        "low": 3,
-        "high": 5,
+        "key": "100 to 200",
+        "name": "100 to 200",
+        "low": 100,
+        "high": 200,
         "value": false
-      }
-    ]
-  }
-]
+      }, {
+        "key": "Above 200",
+        "name": "Above 200",
+        "low": 200,
+        "high": 9999,
+        "value": false
+      }]
+    },
+    {
+      "key": "rating",
+      "name": "Rating",
+      "filters": [{
+          "key": "Above 4",
+          "name": "Above 4",
+          "low": 4,
+          "high": 5,
+          "value": false
+        },
+        {
+          "key": "Above 3.5",
+          "name": "Above 3.5",
+          "low": 3.5,
+          "high": 5,
+          "value": false
+        }, {
+          "key": "Above 3",
+          "name": "Above 3",
+          "low": 3,
+          "high": 5,
+          "value": false
+        }
+      ]
+    }
+  ]
+}

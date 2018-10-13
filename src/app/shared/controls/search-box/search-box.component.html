@@ -2,9 +2,9 @@
   <form class="search-form">
     <mat-form-field class="w-100">
       <span matPrefix> <i class="fas fa-search"></i> &nbsp;</span>
-      <input type="text" [placeholder]="placeholder" name="search" aria-label="Search" matInput [formControl]="searchControl"
+      <input type="text" [placeholder]="placeholder" name="search" [value]="searchText" aria-label="Search" matInput [formControl]="searchControl"
         [matAutocomplete]="auto" (keyup)="onSearchTextChanged($event)">
-      <span matSuffix *ngIf="searchText" (click)="searchText = ''">&nbsp; <i class="fas fa-times"></i> </span>
+      <span matSuffix *ngIf="searchText" (click)="clearText()">&nbsp; <i class="fas fa-times"></i> </span>
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
@@ -12,13 +12,4 @@
       </mat-autocomplete>
     </mat-form-field>
   </form>
-
-  <!-- <form class="search-form">
-    <mat-form-field class="w-100">
-      <span matPrefix> <i class="fas fa-search"></i> &nbsp;</span>
-      <input type="text" name="search" [(ngModel)]="searchText" (ngModelChange)="onSearchTextChanged($event)" (change)="searchNow($event)"
-        matInput placeholder="Search for cuisine">
-      <span matSuffix *ngIf="searchText" (click)="searchText = ''">&nbsp; <i class="fas fa-times"></i> </span>
-    </mat-form-field>
-  </form> -->
 </section>
